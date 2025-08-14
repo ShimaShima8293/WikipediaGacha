@@ -10,7 +10,7 @@
 
 <body>
     <div id="content">
-        <h1>ウィキペディア 10連ガチャ</h1>
+        <h1>ウィキペディア<br>10連ガチャ</h1>
         <button id="generate">引く</button>
         
         <p id="loading"></p>
@@ -35,7 +35,7 @@
                     articleDiv.className = "article";
 
                     const imgHtml = data.thumbnail 
-                ? `<img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}">` 
+                ? `<div class="thumbnail-div"><img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}"></div>` 
                 : "";
 
                     articleDiv.innerHTML = `

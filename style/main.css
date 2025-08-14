@@ -1,5 +1,6 @@
 * {
     font-family: meiryo;
+    font-size: 24px;
 }
 
 div#content {
@@ -24,9 +25,17 @@ div#content {
   #app-content {
     grid-template-columns: 1fr; /* 1 column on mobile */
   }
+
+  /* #generate {
+    display: flex;
+    margin: 0;
+  } */
 }
 
 .thumbnail {
-    height: 100px;
-    margin: 0 auto;
+    height: 300px;
+    width: auto;
+    max-width: 80%;
+    /* margin: 0 auto; */
+    /* display: flex; */
 }

@@ -20,6 +20,12 @@ div#content {
   gap: 10px; /* space between divs */
 }
 
+@media (max-width: 1200px) {
+  #app-content {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+}
+
 .thumbnail {
     height: 100px;
     margin: 0 auto;

@@ -1,0 +1,26 @@
+* {
+    font-family: meiryo;
+}
+
+div#content {
+    border: 1px solid black;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+
+  body { font-family: sans-serif; line-height: 1.5; margin: 20px; }
+  .article { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+  .article h2 { margin: 0 0 5px 0; font-size: 1.2em; }
+  .article p { margin: 0 0 5px 0; }
+  .article a { color: #1a0dab; text-decoration: none; }
+
+#app-content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns of equal width */
+  gap: 10px; /* space between divs */
+}
+
+.thumbnail {
+    height: 100px;
+    margin: 0 auto;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ウィキペディア 10連ガチャ</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style/main.css" />
+    <script src="src/main.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <h1>ウィキペディア 10連ガチャ</h1>
+        <button id="generate">引く</button>
+        
+        <p id="loading"></p>
+        <div id="app-content">
+
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById("app-content");
+
+        document.getElementById("generate").addEventListener("click", async () => {
+            container.innerHTML = ""; // Clear previous articles
+            document.getElementById("loading").innerHTML = "ロード中……";
+
+            for (let i = 0; i < 10; i++) {
+                try {
+                    const response = await fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary");
+                    const data = await response.json();
+
+                    const articleDiv = document.createElement("div");
+                    articleDiv.className = "article";
+
+                    const imgHtml = data.thumbnail 
+                ? `<img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}">` 
+                : "";
+
+                    articleDiv.innerHTML = `
+                ${imgHtml}
+                <h2>${data.title}</h2>
+                <p>${data.extract}</p>
+                <a href="${data.content_urls.desktop.page}" target="_blank">記事を開く</a>
+            `;
+                    container.appendChild(articleDiv);
+                } catch (err) {
+                    console.error(err);
+                    const errorDiv = document.createElement("div");
+                    errorDiv.className = "article";
+                    errorDiv.textContent = "読み込み失敗";
+                    container.appendChild(errorDiv);
+                }
+            }
+            document.getElementById("loading").innerHTML = "ロード完了";
+        });
+        
+    </script>
+</body>
+
+</html>

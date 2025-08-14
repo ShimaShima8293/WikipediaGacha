@@ -36,7 +36,7 @@
 
                     const imgHtml = data.thumbnail 
                 ? `<div class="thumbnail-div"><img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}"></div>` 
-                : "";
+                : `<div class="thumbnail-div"><img class="thumbnail" src="res/NoImage.png"></div>`;
 
                     articleDiv.innerHTML = `
                 ${imgHtml}

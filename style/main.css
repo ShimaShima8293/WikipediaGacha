@@ -1,5 +1,5 @@
 * {
-  font-family: meiryo;
+  font-family: "Yu Mincho Demibold", serif;
 }
 
 h1 {
@@ -14,6 +14,10 @@ h1 {
   font-size: 24px;
   margin: 0 auto;
   /* Now it will center horizontally */
+  background-color: #d9e4ed;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #333;
 }
 
 #loading {
@@ -31,14 +35,16 @@ body {
 }
 
 .article {
-  border: 1px solid #ccc;
+  background-color: #d9e4ed;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+  border: 1px solid #333;
 }
 
 .article h2 {
   margin: 0 0 5px 0;
+  font-weight: bold;
   font-size: 1.2em;
 }
 
@@ -80,6 +86,7 @@ body {
 }
 
 .thumbnail-div {
+  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   align-items: center;

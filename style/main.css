@@ -1,5 +1,5 @@
 * {
-  font-family: "Yu Mincho Demibold", serif;
+  font-family: serif;
 }
 
 h1 {
@@ -12,9 +12,21 @@ h1 {
   width: 150px;
   /* Give it a fixed width (or a percentage) */
   font-size: 24px;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   /* Now it will center horizontally */
   background-color: #d9e4ed;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #333;
+}
+
+#language {
+  display: block;
+  /* Make the button a block element */
+  width: 150px;
+  /* Give it a fixed width (or a percentage) */
+  margin: 0 auto 10px auto;
+  /* Now it will center horizontally */
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #333;

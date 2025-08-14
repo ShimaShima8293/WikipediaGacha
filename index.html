@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <title>ウィキペディア 10連ガチャ</title>
     <meta charset="utf-8" />
@@ -11,8 +12,62 @@
 <body>
     <div id="content">
         <h1>ウィキペディア<br>10連ガチャ</h1>
+
+        <select id="language" title="language">
+            <option>日本語/ja</option>
+            <option>英語/en</option>
+            <option>ドイツ語/de</option>
+            <option>フランス語/fr</option>
+            <option>イタリア語/it</option>
+            <option>スペイン語/es</option>
+            <option>ポルトガル語/pt</option>
+            <option>オランダ語/nl</option>
+            <option>スウェーデン語/sv</option>
+            <option>ノルウェー語/no</option>
+            <option>デンマーク語/da</option>
+            <option>フィンランド語/fi</option>
+            <option>ポーランド語/pl</option>
+            <option>チェコ語/cs</option>
+            <option>スロバキア語/sk</option>
+            <option>ルーマニア語/ro</option>
+            <option>ブルガリア語/bg</option>
+            <option>ハンガリー語/hu</option>
+            <option>ギリシャ語/el</option>
+            <option>アラビア語/ar</option>
+            <option>ヘブライ語/he</option>
+            <option>ロシア語/ru</option>
+            <option>ウクライナ語/uk</option>
+            <option>セルビア語/sr</option>
+            <option>クロアチア語/hr</option>
+            <option>スロベニア語/sl</option>
+            <option>マケドニア語/mk</option>
+            <option>アルバニア語/sq</option>
+            <option>アイスランド語/is</option>
+            <option>エストニア語/et</option>
+            <option>ラトビア語/lv</option>
+            <option>リトアニア語/lt</option>
+            <option>アゼルバイジャン語/az</option>
+            <option>カザフ語/kk</option>
+            <option>ウズベク語/uz</option>
+            <option>タジク語/tg</option>
+            <option>モンゴル語/mn</option>
+            <option>中国語/zh</option>
+            <option>広東語/zh-yue</option>
+            <option>台湾華語/zh-tw</option>
+            <option>韓国語/ko</option>
+            <option>ベトナム語/vi</option>
+            <option>インドネシア語/id</option>
+            <option>マレー語/ms</option>
+            <option>フィリピン語/tl</option>
+            <option>タイ語/th</option>
+            <option>ヒンディー語/hi</option>
+            <option>ベンガル語/bn</option>
+            <option>テルグ語/te</option>
+            <option>マラーティー語/mr</option>
+
+        </select>
         <button id="generate">引く</button>
-        
+
         <p id="loading"></p>
         <div id="app-content">
 
@@ -21,29 +76,38 @@
 
     <script>
         const container = document.getElementById("app-content");
+        const languageSelect = document.getElementById("language");
+
+        var key = 0;
 
         document.getElementById("generate").addEventListener("click", async () => {
             container.innerHTML = ""; // Clear previous articles
-            document.getElementById("loading").innerHTML = "ロード中……";
+            document.getElementById("loading").innerHTML = "読み込み中……";
+            key++;
+            const currentKey = key;
+            const language = languageSelect.value.split("/")[1];
 
             for (let i = 0; i < 10; i++) {
                 try {
-                    const response = await fetch("https://ja.wikipedia.org/api/rest_v1/page/random/summary");
+                    const response = await fetch(`https://${language}.wikipedia.org/api/rest_v1/page/random/summary`);
                     const data = await response.json();
 
                     const articleDiv = document.createElement("div");
                     articleDiv.className = "article";
 
-                    const imgHtml = data.thumbnail 
-                ? `<div class="thumbnail-div"><img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}"></div>` 
-                : `<div class="thumbnail-div"><img class="thumbnail" src="res/NoImage.png"></div>`;
+                    const imgHtml = data.thumbnail
+                        ? `<div class="thumbnail-div"><img class="thumbnail" src="${data.thumbnail.source}" alt="${data.title}"></div>`
+                        : `<div class="thumbnail-div"><img class="thumbnail" src="res/NoImage.png"></div>`;
 
                     articleDiv.innerHTML = `
                 ${imgHtml}
                 <h2>${data.title}</h2>
                 <p>${data.extract}</p>
-                <a href="${data.content_urls.desktop.page}" target="_blank">記事を開く</a>
+                <a href="${data.content_urls.desktop.page}" target="_blank">記事を読む</a>
             `;
+                    if (key != currentKey) {
+                        break;
+                    }
                     container.appendChild(articleDiv);
                 } catch (err) {
                     console.error(err);
@@ -53,7 +117,7 @@
                     container.appendChild(errorDiv);
                 }
             }
-            document.getElementById("loading").innerHTML = "ロード完了";
+            document.getElementById("loading").innerHTML = "読み込み完了";
         });
     </script>
 </body>

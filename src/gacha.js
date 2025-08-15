@@ -9,9 +9,14 @@
     async function startGacha() {
         appContent.innerHTML = ""; // Clear previous articles
         loadingText.innerHTML = "読み込み中……";
+        
         key++;
         const currentKey = key;
+
         const language = languageSelect.value.split("/")[1];
+
+        languageSelect.classList.add("hidden");
+        generateButton.classList.add("hidden");
 
         for (let i = 0; i < 10; i++) {
             try {
@@ -42,11 +47,15 @@
                 console.error(err);
                 const errorDiv = document.createElement("div");
                 errorDiv.className = "article";
-                errorDiv.innerHTML = `読み込み失敗<br>${err}`;
+                errorDiv.innerHTML = `読み込み失敗……(´・ω・\`)<br>${err}`;
                 appContent.appendChild(errorDiv);
             }
         }
-        loadingText.innerHTML = "読み込み完了";
+
+        loadingText.innerHTML = "読み込み完了！";
+        languageSelect.classList.remove("hidden");
+        generateButton.innerHTML = "もう一度引く";
+        generateButton.classList.remove("hidden");
     };
 
     generateButton.addEventListener("click", startGacha);

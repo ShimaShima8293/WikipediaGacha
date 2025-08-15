@@ -6,7 +6,7 @@ h1 {
   text-align: center;
 }
 
-#generate {
+#generate-button {
   display: block;
   /* Make the button a block element */
   width: 150px;
@@ -20,7 +20,7 @@ h1 {
   border: 1px solid #333;
 }
 
-#language {
+#language-select {
   display: block;
   /* Make the button a block element */
   width: 150px;
@@ -32,7 +32,7 @@ h1 {
   border: 1px solid #333;
 }
 
-#loading {
+#loading-text {
   text-align: center;
 }
 
